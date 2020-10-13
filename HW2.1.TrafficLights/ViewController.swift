@@ -20,14 +20,23 @@ class ViewController: UIViewController {
         redTrafficLightView.layer.cornerRadius = 60
         yellowTrafficLightView.layer.cornerRadius = 60
         greenTrafficLightView.layer.cornerRadius = 60
-        // Do any additional setup after loading the view.
+        toggleTextButton.layer.cornerRadius = 10
     }
-
+    
     @IBAction func toggleTextButtonPressed() {
-        redTrafficLightView.alpha = 1
-        toggleTextButton.setTitle("NEXT...", for: .normal)
+        if redTrafficLightView.alpha == 1 {
+            yellowTrafficLightView.alpha = 1
+            redTrafficLightView.alpha = 0.3
+        } else if yellowTrafficLightView.alpha == 1 {
+            yellowTrafficLightView.alpha = 0.3
+            greenTrafficLightView.alpha = 1
+        } else if greenTrafficLightView.alpha == 1 {
+            greenTrafficLightView.alpha = 0.3
+            redTrafficLightView.alpha = 1
+        } else {
+            redTrafficLightView.alpha = 1
+            toggleTextButton.setTitle("NEXT", for: .normal)
+        }
     }
-    
-    
 }
 
